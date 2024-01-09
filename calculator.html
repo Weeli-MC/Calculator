@@ -20,27 +20,27 @@
             <th colspan="4" id="display" type="number" step="0.1">0</th>
         </tr>
         <tr>
-            <td onclick="appendToDisplay(7)">7</td>
-            <td onclick="appendToDisplay(8)">8</td>
-            <td onclick="appendToDisplay(9)">9</td>
-            <td onclick="appendToDisplay('/')">/</td>
+            <td onclick="display(7)">7</td>
+            <td onclick="display(8)">8</td>
+            <td onclick="display(9)">9</td>
+            <td onclick="display('/')">/</td>
         </tr>
         <tr>
-            <td onclick="appendToDisplay(4)">4</td>
-            <td onclick="appendToDisplay(5)">5</td>
-            <td onclick="appendToDisplay(6)">6</td>
-            <td onclick="appendToDisplay('*')">*</td>
+            <td onclick="display(4)">4</td>
+            <td onclick="display(5)">5</td>
+            <td onclick="display(6)">6</td>
+            <td onclick="display('*')">*</td>
         </tr>
         <tr>
-            <td onclick="appendToDisplay(1)">1</td>
-            <td onclick="appendToDisplay(2)">2</td>
-            <td onclick="appendToDisplay(3)">3</td>
-            <td onclick="appendToDisplay('-')">-</td>
+            <td onclick="display(1)">1</td>
+            <td onclick="display(2)">2</td>
+            <td onclick="display(3)">3</td>
+            <td onclick="display('-')">-</td>
         </tr>
         <tr>
-            <td colspan="2" onclick="appendToDisplay(0)">0</td>
-            <td onclick="appendToDisplay('.')">.</td>
-            <td onclick="appendToDisplay('+')">+</td>
+            <td colspan="2" onclick="display(0)">0</td>
+            <td onclick="display('.')">.</td>
+            <td onclick="display('+')">+</td>
         </tr>
         <tr>
             <th colspan="4" style="background-color: gold;" onclick="calculateResult()">=</th>
@@ -49,33 +49,35 @@
 
     <script>
         let currentInput = '';
+           // let previousValue
         const displayElement = document.getElementById('display');
 
-        function appendToDisplay(value) {
+        function display(value) {
 
-            previousValue =  value
-            if (value > 0 ){
-                switch(value) {
-                case '+':
-                calculateResult()
-                case '-':
-                   calculateResult()
-                default:
-                currentInput += value
-            }
-            // currentInput += value
+            // if (value > 0 ){
+            //     switch(value) {
+            //     case '+':
+            //     calculateResult()
+            //     case '-':
+            //        calculateResult()
+            //     default:
+            //     currentInput += value
+            // }
+            // // currentInput += value
 
-            }
-            else{
-                currentInput += value
+            // }
+            // else{
+            //     currentInput += value
 
-            }
-            
+            // }
+            currentInput += value
             displayElement.textContent = currentInput;
         }
 
         function calculateResult() {
             try {
+
+                //evaluate input
                 const result = eval(currentInput);
                 displayElement.textContent = result;
                 currentInput = result.toString();
