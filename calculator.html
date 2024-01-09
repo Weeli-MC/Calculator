@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 50px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="4" id="display" type="number" step="0.1">0</th>
+        </tr>
+        <tr>
+            <td onclick="appendToDisplay(7)">7</td>
+            <td onclick="appendToDisplay(8)">8</td>
+            <td onclick="appendToDisplay(9)">9</td>
+            <td onclick="appendToDisplay('/')">/</td>
+        </tr>
+        <tr>
+            <td onclick="appendToDisplay(4)">4</td>
+            <td onclick="appendToDisplay(5)">5</td>
+            <td onclick="appendToDisplay(6)">6</td>
+            <td onclick="appendToDisplay('*')">*</td>
+        </tr>
+        <tr>
+            <td onclick="appendToDisplay(1)">1</td>
+            <td onclick="appendToDisplay(2)">2</td>
+            <td onclick="appendToDisplay(3)">3</td>
+            <td onclick="appendToDisplay('-')">-</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="appendToDisplay(0)">0</td>
+            <td onclick="appendToDisplay('.')">.</td>
+            <td onclick="appendToDisplay('+')">+</td>
+        </tr>
+        <tr>
+            <th colspan="4" style="background-color: gold;" onclick="calculateResult()">=</th>
+        </tr>
+    </table>
+
+    <script>
+        let currentInput = '';
+        const displayElement = document.getElementById('display');
+
+        function appendToDisplay(value) {
+
+            previousValue =  value
+            if (value > 0 ){
+                switch(value) {
+                case '+':
+                calculateResult()
+                case '-':
+                   calculateResult()
+                default:
+                currentInput += value
+            }
+            // currentInput += value
+
+            }
+            else{
+                currentInput += value
+
+            }
+            
+            displayElement.textContent = currentInput;
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(currentInput);
+                displayElement.textContent = result;
+                currentInput = result.toString();
+            } catch (error) {
+                displayElement.textContent = 0;
+                currentInput = '';
+            }
+        }
+    </script>
+</body>
+</html>
